@@ -1,0 +1,55 @@
+	---
+	Prerequisites
+	---
+
+Prerequisites
+
+* Maven
+
+	* You must run Maven 3.0.X. Any later than this and the dps-maven-plugin will not run successfully.
+	
+* Versant
+
+	* Versant can be downloaded and installed using the instructions from {{{https://arm1s11-eiffel004.eiffel.gic.ericsson.se:8443/nexus/content/sites/tor/data-persistence-service/latest/getting_started/install_versant.html} here}}.
+	
+	* The tests execute against a DB named doozers_db. This <<must>> exist locally.
+	
+* Netsim
+
+	* Install ShrewSoft VPN if not already installed from {{{https://www.shrew.net/download} here}}.
+	
+	* Import the VPN file for the vApp you plan to use into the ShrewSoft Client Application (File --> Import).
+
+* Cluster Isolation
+
+	Due to issues caused by clusters communicating with each other on the same network, unique IP addresses are used to isolate clusters from each other.
+	Every developer should use a unique value for the following properties.
+
+	* unique.arquillian.ip.addr
+	
+	* unique.jboss.messaging.group.address
+	
+	[]
+
+	<<Only people in Team {{{mailto:PDLTORCMTO@ex1.eemea.ericsson.se} Doozers}} should use ip addresses in the range 239.2.2.XXX. If you are using an ip address in this range and are not in Doozers, please change immediately.>>
+	
+** Adding Cluster Isolation Settings to settings.xml
+
+	Add the following (using your own unique values for the above) to <<~/.m2/settings.xml>>
+	
++--
+<profile>
+	<id>inject-cm-mediation-vertical-slice-properties</id>
+	<properties>
+		<unique.arquillian.ip.addr>XXX.XXX.XXX.XXX</unique.arquillian.ip.addr>
+		<unique.jboss.messaging.group.address>XXX.XXX.XXX.XXX</unique.jboss.messaging.group.address>
+		<cm.vertical.node.ip>XXX.XXX.XXX.XXX</cm.vertical.node.ip>    <!-- Valid IP address of node on netsim -->
+        <cm.vertical.node.id>XXX.XXX.XXX.XXX</cm.vertical.node.id>    <!-- Valid name of same node on netsim -->
+	</properties>
+</profile>
+
+<activeProfiles>
+	<activeProfile>inject-cm-mediation-vertical-slice-properties</activeProfile>
+</activeProfiles>
++--
+	

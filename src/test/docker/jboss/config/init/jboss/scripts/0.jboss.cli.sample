@@ -1,0 +1,10 @@
+
+# This is a sample of a jboss-cli script.
+# There can be any number of scripts in this folder, they will be executed
+# at image build time.
+# Script name should end with '.cli'
+if (outcome == success) of /subsystem=logging/logger=com.ericsson.oss.itpf.datalayer:read-resource
+    /subsystem=logging/logger=com.ericsson.oss.itpf.datalayer:change-log-level(level=INFO)
+else
+    /subsystem=logging/logger=com.ericsson.oss.itpf.datalayer:add(level=INFO)
+end-if

@@ -1,0 +1,25 @@
+	---
+	Executing Tests
+	---
+	
+How to Execute CM Mediation Vertical Slice Tests
+
+* Before you begin
+
+	Ensure you have all the {{{./prerequisites.html} Prerequisites}}.
+	
+* JEE Tests
+
+	* mvn clean install -Djee -Djee_setup -Dgateway=<\<gateway_number_only\>>
+		
+		* ie: <mvn clean install -Djee -Djee_setup -Dgateway=123> will run against netsim on atvts123. You <<must>> have vpn file for atvts123 imported into ShrewSoft as per {{{./prerequisites.html} Prerequisites}}.
+	
+	* The flag -Djee_setup unpacks JBoss, deploys models and builds the DPS archives to allow the tests to be executed. This needs to be run the first time you run the tests, or any time you wish to change the deployed models, or re-generate the Database Schema. Otherwise, leave this flag out and test execution will be shortened.
+		
+* Multi-Node Tests
+
+	* mvn clean install -Dmulti_node -Dmulti_node_setup -Dgateway=<\<gateway_number_only\>>
+		
+		* ie: <mvn clean install -Dmulti_node -Dmulti_node_setup -Dgateway=123> will run against netsim on atvts123. You <<must>> have vpn file for atvts123 imported into ShrewSoft as per {{{./prerequisites.html} Prerequisites}}.
+		
+	* The flag -Dmulti_node_setup unpacks JBoss, deploys models and builds the DPS archives to allow the tests to be executed. This needs to be run the first time you run the tests, or any time you wish to change the deployed models, or re-generate the Database Schema. Otherwise, leave this flag out and test execution will be shortened.

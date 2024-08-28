@@ -1,0 +1,13 @@
+	---
+	Test Modules
+	---
+	
+Test Modules
+
+* JEE
+
+	The JEE tests execute within a single JBoss Container and test the end-to-end functionality of Add-Node and CRUD Operations along with basic component integration.
+	
+* Multi-Node
+
+	The Multi-Node tests execute within two JBoss Containers and are split up in a similar way to the target environment, with the dps-mediation-client  in a different container to the mediation-service. These tests test end-to-end functionality and integration including JBoss remoting.

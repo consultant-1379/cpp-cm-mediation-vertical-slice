@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<arquillian 
+    xmlns="http://jboss.org/schema/arquillian"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+    
+    <defaultProtocol type="CucumberServlet 3.0" />
+    
+    <container qualifier="default" default="true">
+        <configuration>
+            <property name="username">root</property>
+            <property name="password">shroot</property>
+        </configuration>
+    </container>
+
+    <extension qualifier="allure">
+        <property name="docker.container">cppcmmediationverticalslice_jboss</property>
+    </extension>
+
+    <extension qualifier="cucumber">
+        <property name="listener.class">com.ericsson.oss.itpf.testware.allure.listener.AllureCucumberTestListener</property>
+        <property name="featureHome">features</property>
+    </extension>
+
+    <extension qualifier="deployments">
+        <property name="deployment.1">com.ericsson.oss.mediation.ned:ned-mediation-handlers-ear:ear:?</property>
+        <property name="deployment.2">com.ericsson.nms.mediation.component:moci-handler-code-ear:ear:?</property>
+        <property name="deployment.3">com.ericsson.oss.mediation.cm.handlers:cpp-ipaddresschange-handlers-ear:ear:?</property>
+        <property name="deployment.4">com.ericsson.oss.mediation.cm.policy:cm-router-policy-ear:ear:?</property>
+    </extension>
+
+    <extension qualifier="ericsson.libraries">
+        <property name="library.1">com.ericsson.oss.services.lcm:license-control-monitoring-service-api:?</property>
+        <property name="library.2">com.ericsson.licensemanagement:LicenseManagementService-API:?</property>
+        <property name="library.3">com.ericsson.oss.services.lcm.model:license-control-monitoring-service-model-jar:?</property>
+        <property name="library.4">com.ericsson.oss.itpf.sdk:service-framework-dist:?</property>
+    </extension>
+
+    <extension qualifier="3pp.libraries">
+        <!-- apache commons -->
+        <property name="library.1">org.apache.commons:commons-lang3:jar:?</property>
+        <property name="library.2">commons-codec:commons-codec:jar:${version.apache.commons.codec}</property>
+        <property name="library.3">com.jayway.awaitility:awaitility:?</property>
+    </extension>
+</arquillian>

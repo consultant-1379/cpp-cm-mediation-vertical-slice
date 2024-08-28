@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ericsson.nms</groupId>
+        <artifactId>integration</artifactId>
+        <version>15.2.0.20</version>
+    </parent>
+
+    <groupId>com.ericsson.nms.mediation</groupId>
+    <artifactId>cpp-cm-mediation-vertical-slice</artifactId>
+    <version>15.12.31-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <url>http://www.ericsson.com</url>
+
+    <organization>
+        <name>Ericsson</name>
+    </organization>
+
+    <name>${project.artifactId}</name>
+    <properties>
+        <!-- BOM Versions -->
+        <ERICdpsruntimeimpl_CXP9030468>1.41.1</ERICdpsruntimeimpl_CXP9030468>
+
+        <!-- Overriding DPS Modeling version -->
+        <version.modeling.bom>15.0.3</version.modeling.bom>
+
+        <!-- License Management Service -->
+        <version.licence-management-service-api>1.4</version.licence-management-service-api>
+        <ERIClicensecontrolmonitoringmodel_CXP9031453>1.21.3</ERIClicensecontrolmonitoringmodel_CXP9031453>
+
+        <!-- Non-RPM Properties. All these properties must be updated manually -->
+        <!-- Mediation-api versions -->
+        <version_mediation_sdk>2.0.2</version_mediation_sdk>
+        <version_mediation_core_api>4.0.118</version_mediation_core_api>
+        <version_mediation_core_service_locator_api>1.0.38</version_mediation_core_service_locator_api>
+
+        <!-- JBoss/Arquillian versions -->
+        <version.jboss.as>6.4.5</version.jboss.as>
+        <version.arq.jboss.as>7.2.0.Final</version.arq.jboss.as>
+        <version.arquillian.bom>1.1.11.Final</version.arquillian.bom>
+        <version.jboss.javaee.6>3.0.2.Final</version.jboss.javaee.6>
+        <version.arquillian.suite.extension>1.1.1</version.arquillian.suite.extension>
+
+        <!-- 3PP versions -->
+        <version.apache.commons>2.4</version.apache.commons>
+        <version.apache.commons.codec>1.10</version.apache.commons.codec>
+        <version.apache.commons.lang>3.4</version.apache.commons.lang>
+        <version.awaitility>1.7.0</version.awaitility>
+        <version.mockito>1.10.19</version.mockito>
+        <version.testng>6.9.10</version.testng>
+
+        <!-- Site properties -->
+
+        <nexusRootUrl>https://arm1s11-eiffel004.eiffel.gic.ericsson.se:8443</nexusRootUrl>
+        <nexusUrl>${nexusRootUrl}/nexus/</nexusUrl>
+        <project.documentation.url>${nexusUrl}content/sites/tor/${project.artifactId}/</project.documentation.url>
+        <!-- overriding settings in parent pom -->
+
+        <depsite.url>dav:${project.documentation.url}/latest</depsite.url>
+    </properties>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changelog-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <issueLinkUrl>http://jira-oss.lmera.ericsson.se/browse/%ISSUE%</issueLinkUrl>
+                    <issueIDRegexPattern>[A-Z]{2,}-\d+</issueIDRegexPattern>
+                    <displayChangeSetDetailUrl>https://gerrit.ericsson.se/gitweb?p=OSS/com.ericsson.nms.mediation/${project.artifactId}.git;a=commit;h=%REV%</displayChangeSetDetailUrl>
+                    <type>date</type>
+                    <dates>
+                        <date>2012-01-01</date>
+                    </dates>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Jboss dependencies -->
+            <dependency>
+                <groupId>com.ericsson.oss.de</groupId>
+                <artifactId>enm-docker-bom</artifactId>
+                <version>RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.spec</groupId>
+                <artifactId>jboss-javaee-6.0</artifactId>
+                <version>${version.jboss.javaee.6}</version>
+                <type>pom</type>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.ericsson.oss.itpf.sdk</groupId>
+                <artifactId>service-framework-bundle</artifactId>
+                <version>${ERICserviceframework_CXP9031003}</version>
+                <type>zip</type>
+            </dependency>
+
+            <!-- Overrides the version in the DPS BOM -->
+            <dependency>
+                <groupId>com.ericsson.oss.itpf.modeling</groupId>
+                <artifactId>Modeling-BOM</artifactId>
+                <version>${version.modeling.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.ericsson.nms.mediation</groupId>
+                <artifactId>mediation-sdk-bom</artifactId>
+                <version>${version_mediation_sdk}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.ericsson.oss.itpf.datalayer.dps</groupId>
+                <artifactId>data-persistence-service-bom</artifactId>
+                <version>${ERICdpsruntimeimpl_CXP9030468}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.ericsson.nms.mediation</groupId>
+                <artifactId>mediation-core-api</artifactId>
+                <version>${version_mediation_core_api}</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>com.ericsson.oss.mediation</groupId>
+                <artifactId>mediation-core-service-locator-api</artifactId>
+                <version>${version_mediation_core_service_locator_api}</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>com.ericsson.oss.services.cm</groupId>
+                <artifactId>cm-validity-controller-ear</artifactId>
+                <version>${ERICcmvaliditycontroller_CXP9031550}</version>
+                <type>ear</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.directory.studio</groupId>
+                <artifactId>org.apache.commons.io</artifactId>
+                <version>${version.apache.commons}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ericsson.oss.mediation</groupId>
+                <artifactId>mediation-core-api-event-models-jar</artifactId>
+                <version>${ERICmedcoreeventmodels_CXP9030900}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.ericsson.licensemanagement</groupId>
+                <artifactId>LicenseManagementService-API</artifactId>
+                <version>${version.licence-management-service-api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.ericsson.oss.services.lcm.model</groupId>
+                <artifactId>license-control-monitoring-service-model-jar</artifactId>
+                <version>${ERIClicensecontrolmonitoringmodel_CXP9031453}</version>
+            </dependency>
+
+            <!-- 3pp dependencies -->
+            <dependency>
+                <groupId>com.jayway.awaitility</groupId>
+                <artifactId>awaitility</artifactId>
+                <version>${version.awaitility}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <profiles>
+        <profile>
+            <id>site_latest</id>
+            <distributionManagement>
+                <site>
+                    <id>site</id>
+                    <name>Site</name>
+                    <url>${site.url}/${project.artifactId}/latest</url>
+                </site>
+            </distributionManagement>
+        </profile>
+
+        <!-- Used to publish 'versioned' site documentation -->
+        <profile>
+            <id>site_versioned</id>
+            <distributionManagement>
+                <site>
+                    <id>site</id>
+                    <name>Site</name>
+                    <url>${site.url}/${project.artifactId}/${sprint}</url>
+                </site>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.doxia</groupId>
+                        <artifactId>doxia-module-markdown</artifactId>
+                        <version>1.3</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <locales>en</locales>
+                    <inputEncoding>UTF-8</inputEncoding>
+                    <outputEncoding>UTF-8</outputEncoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <modules>
+        <module>cpp-cm-mediation-vertical-slice-jar</module>
+        <module>testsuite</module>
+    </modules>
+
+    <scm>
+        <tag>cpp-cm-mediation-vertical-slice-1.0.14</tag>
+    </scm>
+</project>

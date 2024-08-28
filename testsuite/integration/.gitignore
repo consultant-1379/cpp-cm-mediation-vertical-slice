@@ -1,0 +1,10 @@
+/.settings
+/.project
+/.classpath
+/target
+.pmd
+c:\\*
+/**/deployed-model
+/**/dps_work
+/**/jboss
+/**/model-jar

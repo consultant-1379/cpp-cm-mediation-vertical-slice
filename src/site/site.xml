@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+
+	<skin>
+		<groupId>com.ericsson.nms.pres.client</groupId>
+		<artifactId>EricssonSkin</artifactId>
+		<version>1.0-RELEASE</version>
+	</skin>
+
+	<bannerLeft>
+		<name>CM Mediation Vertical Slice</name>
+	</bannerLeft>
+	<publishDate position="right" />
+	<bannerRight>
+		<src>images/logo.png</src>
+		<href>http://www.ericsson.com/</href>
+	</bannerRight>
+	<poweredBy>
+		<logo name="Ericsson" href="http://www.ericsson.com/" img="images/logo.png" />
+	</poweredBy>
+	<body>
+		<links>
+			<item name="Changelog" href="/changelog.html" />
+			<item name="Ericsson" href="http://www.ericsson.com" />
+		</links>
+
+		<menu name="CM Mediation Vertical Slice">
+			<item name="Home" href="/index.html" />
+			<item name="Test Modules" href="/test_modules.html" />
+			<item name="Prerequisites" href="/prerequisites.html" />
+			<item name="Known Issues" href="/known_issues.html" />
+			<item name="JavaDoc" href="/apidocs/index.html" />
+		</menu>
+		<menu name="How to...">
+			<item name="Execute Tests" href="/execute.html" />
+			<item name="Add to Project" href="/add_to_project.html" />
+		</menu>
+		<menu name="Dependency Versions">
+			<item name="Dependencies" href="/dependencies.html" />
+		</menu>
+	</body>
+</project>

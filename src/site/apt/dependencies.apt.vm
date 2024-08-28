@@ -1,0 +1,93 @@
+	---
+	Dependency Versions
+	---
+	
+ENM ISO
+
+*---+---*
+| Sprint | ${sprint} |
+*---+---*
+| ENM ISO | ${iso_version} |
+*---+---*
+	
+Mediation Components
+
+*---+---*
+| DPS Mediation Client | ${ERICdpsmediationclient_CXP9031421} |
+*---+---*
+| Event Based Client | ${ERICeventmediationclient_CXP9031422} |
+*---+---*
+| Mediation Router | ${ERICmediationrouter_CXP9031423} |
+*---+---*
+| Mediation Service | ${ERICpmmedcom_CXP9030511} |
+*---+---*
+
+Mediation APIs
+
+*---+---*
+| Mediation SDK | ${version_mediation_sdk} |
+*---+---*
+| Mediation Core API | ${version_mediation_core_api} |
+*---+---*
+| Mediation Core Service Locator API | ${version_mediation_core_service_locator_api} |
+*---+---*
+
+Platform Dependencies
+
+*---+---*
+| Service Framework BOM | ${ERICserviceframework_CXP9031003} |
+*---+---*
+| DPS BOM | ${ERICdpsruntimeimpl_CXP9030468} |
+*---+---*
+| Modeling BOM | ${version_modeling_bom} |
+*---+---*
+
+Add-Node
+
+*---+---*
+| Add Node Bootstrap Handler Code | ${ERICaddnodebootstraphandlers_CXP9031419} |
+*---+---*
+| Add Node Bootstrap Handler Model | ${ERICaddnodebootstrapmodels_CXP9031420} |
+*---+---*
+
+CRUD Operations
+
+*---+---*
+| Moci Handler Ear | ${ERICmocihandlercode_CXP9030423} |
+*---+---*
+| Moci Handler Model | ${ERICmocihandlermodel_CXP9030422} |
+*---+---*
+| Write Node Flow Model | ${ERICwritenodeflowmodel_CXP9030945} |
+*---+---*
+| Read Non Persisted Attribute Flow | ${ERICreadnonpersistedattributesflow_CXP9031585} |
+*---+---*
+
+Mediation Configuration
+
+*---+---*
+| ErbsMediationConfiguration | ${ERICerbsmediationconfigurationmodel_CXP9030429} |
+*---+---*
+
+Network Element Connector
+
+*---+---*
+| Network Element Connector Receiver | ${ERICneconnmep_CXP9031217} |
+*---+---*
+| Network Element Connector Config Model | ${ERICnetworkconnectorconfigmodels_CXP9031370} |
+*---+---*
+| Network Element Connector API | ${ERICneconn_CXP9030958} |
+*---+---*
+
+Mediation Models
+
+*---+---*
+| Mediation Core API Event Model | ${ERICmedcoreeventmodels_CXP9030900} |
+*---+---*
+| Mediation Core API Channel Model | ${ERICmedcoreapichannelmodels_CXP9030899} |
+*---+---*
+| Mediation Core API Config Model | ${ERICmedcoreconfigmodels_CXP9030902} |
+*---+---*
+| Mediation Core Cache Model | ${ERICmedcorecachedefmodels_CXP9030901} |
+*---+---*
+| Mediation Service Config Model | ${ERICmedservconfigmodels_CXP9030903} |
+*---+---*

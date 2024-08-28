@@ -1,0 +1,16 @@
+	---
+	Known Issues
+	---
+	
+Current Known Issues
+
+	* 22/12/2014
+	
+		* Using DPS Maven Plugin 1.16.4 and later breaks RVI connection for ELX users.
+		
+		* Off RVI execute the build with the command <mvn clean install -Dwfh_setup>. This will set up the model repo, jboss and dps ears.
+		
+		* On RVI, execute the tests with the command <mvn clean install -Dwfh_test -Dgateway=XXX>.
+
+		
+	

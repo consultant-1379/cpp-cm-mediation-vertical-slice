@@ -1,0 +1,11 @@
+.settings
+.classpath
+.project
+c:\\*
+.idea/
+*.iml
+*.eml
+**/bin/*
+jboss-eap-6.4.5/
+target/
+

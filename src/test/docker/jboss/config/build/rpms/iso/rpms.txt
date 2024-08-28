@@ -1,0 +1,29 @@
+ERICpib_CXP9030194
+ERIClicensecontrolmonitoringservice_CXP9031452
+
+############################
+# install specific modules #
+############################
+
+ERICcryptographyservice_CXP9031013          
+ERICcryptographyserviceapi_CXP9031014       
+ERICftpjcaconnectorapi_CXP9031542           
+ERICneconn_CXP9030958                       
+ERICnetworkmodelretrieverapi_CXP9032695     
+ERICtransportapi_CXP9031610
+
+#################################
+# install specific dependencies #
+#################################
+
+ERICcmmediationcommonhandlers_CXP9032461         
+ERICcppnetworkmodelretrievertool_CXP9032554      
+ERICcppsoftwaresynchandlercode_CXP9032505        
+ERICinbounddpshandlercode_CXP9030732             
+ERICneconnmep_CXP9031217                         
+ERICnetworkmodelretrieverplugins_CXP9032875      
+ERICnotificationreceiverhandlercode_CXP9031204   
+ERICsshcredentialsmanagerhandlercode_CXP9032068  
+ERICsubscriptioncreationhandlercode_CXP9031211   
+ERICsubscriptionvalidationhandlercode_CXP9031216 
+ERICsyncnodemocihandlercode_CXP9030740

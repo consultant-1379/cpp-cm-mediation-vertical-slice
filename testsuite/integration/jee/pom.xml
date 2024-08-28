@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ericsson.nms.mediation</groupId>
+        <artifactId>cpp-cm-mediation-vertical-slice-testsuite-integration</artifactId>
+        <version>15.12.31-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>cpp-cm-mediation-vertical-slice-testsuite-integration-jee</artifactId>
+    <dependencies>
+    	<!-- testware -->
+        <dependency>
+            <groupId>com.ericsson.oss.itpf.testware</groupId>
+            <artifactId>testware-commons-jar</artifactId>
+            <scope>provided</scope>
+            <version>1.0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.oss.itpf.testware</groupId>
+            <artifactId>testware-cucumber-jar</artifactId>
+            <scope>test</scope>
+            <version>1.0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.oss.itpf.testware</groupId>
+            <artifactId>testware-allure-jar</artifactId>
+            <scope>test</scope>
+            <version>1.0.9</version>
+        </dependency>
+
+        <!-- arquillian -->
+        <dependency>
+            <groupId>org.jboss.as</groupId>
+            <artifactId>jboss-as-arquillian-container-remote</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.protocol</groupId>
+            <artifactId>arquillian-protocol-servlet</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.resolver</groupId>
+            <artifactId>shrinkwrap-resolver-depchain</artifactId>
+            <type>pom</type>
+        </dependency>
+
+        <!-- cm-mediation -->
+        <dependency>
+            <groupId>com.ericsson.nms.mediation</groupId>
+            <artifactId>cpp-cm-mediation-vertical-slice-jar</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- 3pp -->
+        <dependency>
+            <groupId>org.hornetq</groupId>
+            <artifactId>hornetq-jms-client</artifactId>
+            <version>2.3.25.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>${version.mockito}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </testResource>
+        </testResources>
+    </build>
+</project>

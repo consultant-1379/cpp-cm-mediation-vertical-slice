@@ -1,0 +1,54 @@
+	---
+	How to Add to CM Mediation Vertical Slice
+	---
+	
+Changing Test Configuration
+
+	Test configuration is contained within the pom.xml of the cm-mediation-vertical-slice-testsuite-integration project. The large majority of the configuration, eg: model-repo, JBoss modules etc. are common to both the 
+	JEE and Multi-Node projects. To update the test configuration changes should be made here. 
+	
+Adding Tests
+
+	The test cases in the CM Mediation Vertical Slice use the {{{http://en.wikipedia.org/wiki/Delegation_pattern} Delegation Pattern}}. For each use case there is a common delegate in 
+	the cm-mediation-vertical-slice-jar module which is injected into the test class itself. The test method then invokes the corresponding method on the delegate to 
+	execute the test. This reduces the duplicated test code across the JEE and Multi-Node projects, however, there still is duplicated code as the two test classes are close to identical 
+	in calling the delegate.
+
+* Adding New Tests to Existing Classes
+
+	[[1]] Add method to existing delegate to perform testing.
+	
+	[[2]] Create new test method in jee & multi-node test classes.
+	
+	[[3]] Invoke new delegate method from new test methods.
+	
+Adding new test for the Add-Node Use Case
+	
+    [[1]] Add new entries to the relevant TestData class (com.ericsson.oss.mediation.test.constants.AddCppNodeTestData or com.ericsson.oss.mediation.test.constants.AddEcimNodeTestData).
+    
+    [[2]] These new entries will be picked up and executed as part of the data set for the tests.
+    
+    [[3]] Note: The maven-surefire-plugin shows the Add Node tests as single test executions despite executing multiple times, to find errors search for the String "Failed to Add the Nodes with the ossPrefix" in the maven output to find the failing execution(s).
+	
+
+* Adding Tests for New Use Cases
+
+	[[1]] Create new Delegate class for use case.
+	
+	[[2]] Add Delegate to Test ear in com.ericsson.oss.mediation.test.deployment.Deployments#getTestEar() using testEar.addTestClass(...Delegate.class).
+	
+	[[3]] Create new test class in jee & multi-node modules.
+	
+	[[4]] Inject Delegate into test classes.
+	
+	[[5]] Add test class to the respective Base...Test#createTestEar() using testEar.addTestClass(...Test.class).
+	
+	[[6]] Perform steps as per "Adding New Tests to Existing Classes" to add test methods.
+	
+Adding Documentation
+
+	The documentation is stored in the root project's src/site folders. A guide for using apt can be found {{{http://maven.apache.org/doxia/references/apt-format.html} here}}.
+	
+Submitting Changes
+
+	All changes <<must>> be submitted using Gerrit Code Review to at least one member of Team {{{mailto:PDLTORCMTO@ex1.eemea.ericsson.se} Doozers}}.

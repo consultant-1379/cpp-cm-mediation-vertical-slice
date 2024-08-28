@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ COPYRIGHT Ericsson 2013
+  ~
+  ~ The copyright to the computer program(s) herein is the property of
+  ~ Ericsson Inc. The programs may be used and/or copied only with written
+  ~ permission from Ericsson Inc. or in accordance with the terms and
+  ~ conditions stipulated in the agreement/contract under which the
+  ~ program(s) have been supplied.
+  -->
+<!--suppress XmlPathReference -->
+<jboss:ejb-jar xmlns:jboss="http://www.jboss.com/xml/ns/javaee"
+               xmlns="http://java.sun.com/xml/ns/javaee"
+               xmlns:iiop="urn:iiop"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://www.jboss.com/xml/ns/javaee http://www.jboss.org/j2ee/schema/jboss-ejb3-2_0.xsd
+                  http://java.sun.com/xml/ns/javaee http://www.jboss.org/j2ee/schema/jboss-ejb3-spec-2_0.xsd
+                  urn:iiop jboss-ejb-iiop_1_0.xsd"
+               version="3.1"
+               impl-version="2.0">
+    <assembly-descriptor>
+        <iiop:iiop>
+             <ejb-name>RemoteService</ejb-name>
+             <iiop:binding-name>jts/DpsRemoteService</iiop:binding-name>
+        </iiop:iiop>
+    </assembly-descriptor>
+</jboss:ejb-jar>

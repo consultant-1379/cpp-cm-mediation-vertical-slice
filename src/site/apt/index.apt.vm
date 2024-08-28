@@ -1,0 +1,13 @@
+	---
+	CM Mediation Vertical Slice
+	---
+	
+CM Mediation Vertical Slice
+
+	The CM Mediation Vertical Slice is an Arquillian project to test the following use cases for LTE node types:
+	
+		* Add Node
+		
+		* Perform CRUD operation on LTE MO types
+		
+		* Perform MO Actions on LTE MO types
